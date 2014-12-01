@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>在一起三年的第一次旅行</title>
+    <script src="http://cdn.staticfile.org/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://cdn.staticfile.org/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script src="js/jquery.slimscroll.min.js"></script>
+    <script src="js/jquery.fullPage.min.js"></script>
+    <!--<link rel="stylesheet" href="css/jquery.fullPage.css?1"/>-->
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <style>
+        .heibg{background:#000;opacity:0.8;width:100%;height:100%;}
+        .diyi{width: 100%;
+            float: left;
+            height:100%;
+            display:none;
+            background: #000;
+            z-index: 222;
+            top:600%;
+            position: absolute;}
+        .fenxiangzi{position:absolute;top:3%;left:15%;color:#fff;margin-left:auto;margin-right:auto;}
+        .fenxiangzi p{font-size:18px;width:100%;clear:both;}
+        .dajian1{width:35%;margin-right:5%;float:right;}
+        /**
+ * fullPage 1.4.5
+ * https://github.com/alvarotrigo/fullPage.js
+ * MIT licensed
+ *
+ * Copyright (C) 2013 alvarotrigo.com - A project by Alvaro Trigo
+ */
+
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+        #superContainer {
+            height: 100%;
+            position: relative;
+        }
+        .section {
+            position: relative;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        .slide {
+            float: left;
+        }
+        .slide, .slidesContainer {
+            height: 100%;
+            display: block;
+        }
+        .slides {
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            -webkit-transition: all 0.3s ease-out;
+            -moz-transition: all 0.3s ease-out;
+            -o-transition: all 0.3s ease-out;
+            transition: all 0.3s ease-out;
+        }
+        .section.table, .slide.table {
+            display: table;
+            width: 100%;
+        }
+        .tableCell {
+            display: table-cell;
+            vertical-align: middle;
+            width: 100%;
+            height: 100%;
+        }
+        .slidesContainer {
+            float: left;
+            position: relative;
+        }
+        .controlArrow {
+            position: absolute;
+            top: 50%;
+            cursor: pointer;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            margin-top: -38px;
+        }
+        .controlArrow.prev {
+            left: 15px;
+            width: 0;
+            border-width: 38.5px 34px 38.5px 0;
+            border-color: transparent #fff transparent transparent;
+        }
+        .controlArrow.next {
+            right: 15px;
+            border-width: 38.5px 0 38.5px 34px;
+            border-color: transparent transparent transparent #fff;
+        }
+        .scrollable {
+            overflow: scroll;
+        }
+        .easing {
+            -webkit-transition: all 0.7s ease-out;
+            -moz-transition: all 0.7s ease-out;
+            -o-transition: all 0.7s ease-out;
+            transition: all 0.7s ease-out;
+        }
+        #fullPage-nav {
+            position: fixed;
+            z-index: 100;
+            margin-top: -32px;
+            top: 50%;
+            opacity: 1;
+        }
+        #fullPage-nav.right {
+            right:5px;
+        }
+        #fullPage-nav.left {
+            left: 17px;
+        }
+        .fullPage-slidesNav {
+            position: absolute;
+            z-index: 4;
+            left: 50%;
+            opacity: 1;
+        }
+        .fullPage-slidesNav.bottom {
+            bottom: 17px;
+        }
+        .fullPage-slidesNav.top {
+            top: 17px;
+        }
+        #fullPage-nav ul,
+        .fullPage-slidesNav ul {
+            margin: 0;
+            padding: 0;
+        }
+        #fullPage-nav li,
+        .fullPage-slidesNav li {
+            display: block;
+            width: 14px;
+            height: 13px;
+            margin: 7px;
+            position:relative;
+        }
+        .fullPage-slidesNav li {
+            display: inline-block;
+        }
+        #fullPage-nav li a,
+        .fullPage-slidesNav li a {
+            display: block;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        #fullPage-nav li .active span,
+        .fullPage-slidesNav .active span {
+            background: #333;
+        }
+        #fullPage-nav span,
+        .fullPage-slidesNav span {
+            top: 2px;
+            left: 2px;
+            width: 8px;
+            height: 8px;
+            border: 1px solid #000;
+            background: rgba(0, 0, 0, 0);
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            position: absolute;
+            z-index: 1;
+        }
+        .fullPage-tooltip {
+            position: absolute;
+            color: #fff;
+            font-size: 14px;
+            font-family: arial, helvetica, sans-serif;
+            top: -2px;
+        }
+        .fullPage-tooltip.right {
+            right: 20px;
+        }
+        .fullPage-tooltip.left {
+            left: 20px;
+        }
+        /*瑞士活动*/
+        *{margin: 0;padding: 0;list-style: none; -webkit-tap-highlight-color:rgba(0,0,0,0)}
+        /** 清除内外边距 **/
+        body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */
+        dl, dt, dd, ul, ol, li, /* list elements 列表元素 */
+        pre, /* text formatting elements 文本格式元素 */
+        form, fieldset, legend, button, input, textarea, /* form elements 表单元素 */
+        th, td /* table elements 表格元素 */ {
+            margin: 0px;
+            padding: 0px;
+            border: none;
+        }
+        html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
+
+        /** 设置默认字体 **/
+        body,
+        button, input, select, textarea /* for ie */ {
+            font: 1rem/1.5 Verdana,'microsoft yahei',tahoma,Helvetica,sans-serif;
+
+        }
+        h1, h2, h3, h4, h5, h6 { font-size: 100%;color:inherit}
+        address, cite, dfn, em, var { font-style: normal; } /* 将斜体扶正 */
+        code, kbd, pre, samp { font-family: courier new, courier, monospace; } /* 统一等宽字体 */
+        small { font-size: 12px; } /* 小于 12px 的中文很难阅读，让 small 正常化 */
+        /** 重置列表元素 **/
+        ul, ol { list-style: none; }
+        /*重置提交按钮默认样式*/
+        input[type='submit'],input[type='button'],input[type='date']{-webkit-appearance:none}
+        /** 重置文本格式元素 **/
+        a { text-decoration: none;}
+        a:hover { text-decoration:none}
+        .clear{ clear: both; height: 0px; line-height: 0px;}
+        /** 重置表单元素 **/
+        legend { color: #000; } /* for ie6 */
+        fieldset, img { border: 0; } /* img 搭车：让链接里的 img 无边框 */
+        button, input, select, textarea { font-size: 100%; } /* 使得表单元素在 ie 下能继承字体大小 */
+        /* 注：optgroup 无法扶正 */
+        /** 重置表格元素 **/
+        table { border-collapse: collapse; border-spacing: 0; }
+        *{margin: 0px; padding: 0px;}
+        a{text-decoration: none}
+        .clear{clear: both; height: 0px; line-height: 0px;
+            font-size: 0px;}
+        .w40{width: 40%}
+        .w60{width: 60%}
+        .w50{width: 50%}
+        .w30{
+            width: 30%;
+        }
+        .w70{
+            width: 70%;
+        }
+        .page6 .bgc-1,.page6 .bgc-2,.page6 .bgc-3{height:27.5%}
+        .page6 .bgc-4 .w30 img{height:100%;max-height:10rem}
+        .page6 .bgc-4 .w70 img{height: 15%}
+        .l{
+            float: left;}
+        .r{
+            float: right;}
+        .hide{display: none}
+        .grid-1{width: 100%;
+            float: left;}
+        .grid-2{width: 50%}
+        .grid-3{width: 30%}
+        .bor-t{box-sizing: border-box;
+            border-top: 2px solid #fff;}
+        .bgc-1{background: #1b96d1}
+        .bgc-2{background: #27c1b9}
+        .bgc-3{background: #e97351}
+        .bgc-4{background: #d1cf1b}
+        .bgc-5{background: #ffd248}
+        .bgc-6{background: #ececec}
+        .color-1{color: #268ac8}
+        .pay-arrow{width: 2rem;
+            position: absolute; height: 2rem;padding-left: 1rem}
+        .active-box{
+            position: relative;
+            overflow: hidden;
+            width: 96%;
+            text-align: center;
+            margin: 1rem auto 1rem;
+            color: #fff}
+
+
+        .active-box:last-child{margin-bottom: 0px}
+        .active-box .active-box-btm{
+            padding-left: .3rem;
+            box-sizing: border-box;
+            position: absolute; bottom:.2rem;}
+        .active-rule{padding-top: .4rem;
+
+        }
+        .active-rule .detail{border-right:1px solid #fff;
+            margin-top: .6rem; border-bottom: none; box-sizing: border-box}
+        .active-rule .detail p{color: #268ac8;font-weight: bold;
+            font-size: 1.2rem;}
+        .active-rule .detail a{background: #268ac8;color: #fff;
+            display: inline-block;
+            margin-top: .5rem;padding:.2rem .8rem;border-radius:10px}
+
+        .active-rule .say{padding:.5rem;box-sizing: border-box;
+            border-right: 1px solid #fff;
+           }
+        .active-rule .say > p{
+            margin-bottom: .2rem;}
+        .active-rule .say label{
+            width: 100%;
+            float: left;
+            margin-top: .3rem;
+            color: #626262;
+            font-size:.8rem;}
+        .active-rule .say input{vertical-align: middle;
+            margin-right: .3rem;}
+        .active-rule .price{width: 80%;height:2rem;margin:1rem auto;background: #F2F2F2;border: 1px solid #d7d7d7}
+        .active-rule .price .span1{position: absolute; top:2.5rem; left:0px}
+        .active-rule .price .span2{position: absolute; top:2.5rem; right:-1rem;font-size: 1rem}
+        .active-rule .price .span2:before{content: '';
+            width: 0; height: 0;border-width: 0px .4rem .4rem;right:.8rem;
+            position: absolute;top: -.2rem;border-color:transparent transparent #268ac8;border-style: solid ;font-size: 1rem;}
+        .active-rule .kj-btn{width: 60%;background:#268ac8;color:#fff;border-radius:50px;padding: .5rem 0rem;margin: 1rem auto 0rem; display: block}
+
+        .active-rule h1{
+            margin-left: 1rem;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            margin-top: 2rem;}
+        .active-rule .rule-txt p{
+            margin-bottom: 1.5rem;
+            /* font-size: 2.5rem; */
+            margin-right: 1rem;
+            line-height: 1.5rem;
+            margin-left: 3rem;}
+        .active-rule .rule-txt p span{
+            font-size: 1rem;
+            margin-left: -1rem;
+            vertical-align: middle;
+        }
+        .fz1em{
+            font-family: '微软雅黑';
+            font-size:.8rem;}
+
+        .ta-c{
+            text-align: center; }
+        .section .img{width: 100%;
+            float: left;
+            height:100%;
+            position: absolute; top: 0px;}
+        .section img{
+            height: 100%;
+
+            float: left; width: 100%}
+        .active .left-wrap{
+            position: absolute; bottom: 3rem}
+        .left{
+            float: left;
+            margin-bottom: .2rem;
+            -webkit-transform: translateX(-100px);
+            -moz-transform: translateX(-100px);
+            -ms-transform: translateX(-100px);
+            -o-transform: translateX(-100px);
+            transform: translateX(-100px);
+            opacity: 0;
+            padding:.2rem .5rem .2rem 1rem;text-align: center;
+            background:rgba(0,0,0,.5);
+            font-size: 1rem;
+            color: #fff;
+        }
+        .left1{-webkit-transition: all .4s ease-in;
+            -moz-transition: all .4s ease-in;
+            -ms-transition: all .4s ease-in;
+            -o-transition: all .4s ease-in;
+            transition: all .4s ease-in;}
+        .left2{-webkit-transition: all .3s ease-in;
+            -moz-transition: all .3s ease-in;
+            -ms-transition: all .3s ease-in;
+            -o-transition: all .3s ease-in;
+            transition: all .3s ease-in;
+        }
+        .left3{
+            -webkit-transition: all .2s ease-in;
+            -moz-transition: all .2s ease-in;
+            -ms-transition: all .2s ease-in;
+            -o-transition: all .2s ease-in;
+            transition: all .2s ease-in;
+        }
+        .active .left1{
+            opacity: 1;
+            -webkit-transform: translateX(0px);
+            -moz-transform: translateX(0px);
+            -ms-transform: translateX(0px);
+            -o-transform: translateX(0px);
+            transform: translateX(0px);
+            -webkit-transition: all .8s ease-in;
+            -moz-transition: all .8s ease-in;
+            -ms-transition: all .8s ease-in;
+            -o-transition: all .8s ease-in;
+            transition: all .8s ease-in;}
+        .active .left2{
+            opacity: 1;
+            -webkit-transform: translateX(0px);
+            -moz-transform: translateX(0px);
+            -ms-transform: translateX(0px);
+            -o-transform: translateX(0px);
+            transform: translateX(0px);
+            -webkit-transition: all .5s ease-in .5s;
+            -moz-transition: all .5s ease-in .5s;
+            -ms-transition: all .5s ease-in .5s;
+            -o-transition: all .5s ease-in .5s;
+            transition: all .5s ease-in .5s;
+        }
+        .active .left3{
+            opacity: 1;
+            -webkit-transform: translateX(0px);
+            -moz-transform: translateX(0px);
+            -ms-transform: translateX(0px);
+            -o-transform: translateX(0px);
+            transform: translateX(0px);
+            -webkit-transition: all .5s ease-in 1s;
+            -moz-transition: all .5s ease-in 1s;
+            -ms-transition: all .5s ease-in 1s;
+            -o-transition: all .5s ease-in 1s;
+            transition: all .5s ease-in 1s;
+        }
+        .rs_sn{position: absolute;top:0%;left: 50%;margin-left: -40%;width: 80%;
+            height: 80%;
+            opacity: 0;
+            -webkit-transform:scale(.2);
+            -moz-transform: scale(.2);
+            -ms-transform: scale(.2);
+            -o-transform: scale(.2);
+            transform: scale(.2);
+
+        }
+        .active .rs_sn{
+            opacity: 1;
+            -webkit-transform:scale(1);
+            -moz-transform: scale(1);
+            -ms-transform: scale(1);
+            -o-transform: scale(1);
+            transform: scale(1);
+            -webkit-transition: all .4s ease-in 1.5s;
+            -moz-transition: all .4s ease-in 1.5s;
+            -ms-transition: all .4s ease-in 1.5s;
+            -o-transition: all .4s ease-in 1.5s;
+            transition: all .4s ease-in 1.5s;}
+        .active .rs_sn img{height:40%;}
+        .active-rule .rs_bj{width:96%;margin:0px auto;padding:.5rem;box-sizing:border-box;border-bottom:1px solid #fff; background: #fedd77}
+        .active-rule .rs_bj .line{border: 1px solid #fff;
+            padding: .2rem;
+            font-size: .6rem;
+            box-sizing: border-box;
+            border-bottom: none}
+        .active-rule .rs_bj .line:last-child{border-bottom: 1px solid #fff}
+        /*砍价*/
+        .kj-page{position: relative;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            padding-top: 10px;
+            box-sizing: border-box;height: 100%}
+        .kj-page .img{width: 100%;height: 100%;}
+        .kj-page .img img{width: 100%;height: 100%}
+        .kj-page-btn{position: absolute;color:#fff;
+            border-radius: 30px;
+            margin-bottom: 10px;left: 50%;text-align: center; margin-left: -40%;padding:.4rem;width: 80%;}
+        .t1{top:40%}
+        .t2{top:50%}
+        .kj-color1{background: #e3682f}
+        .kj-color2{background: #268ac8}
+        .kj-color3{background: #9e9e9e}
+        .kj-page .kj-page-price{top:32%; color: #268ac8;font-size: 1rem;
+            left: 50%; text-align: center;width: 80%;
+            font-family: '微软雅黑';
+            margin-left: -40%;
+            position: absolute;}
+
+        .btm-wrap {
+            width:80%;
+            left: 50%;
+            margin-left: -40%;
+            position: absolute;
+            bottom: 1rem;
+
+        }
+        .btm-wrap a{width: 33%;text-align: center; }
+        .btm-wrap a img{width: 80%;height: 80%;max-width: 131px; max-height: 244px;}
+        .btm-wrap .btm1{
+            position: absolute; left: 0px;bottom: 1rem}
+        .btm-wrap .btm2{
+            position: absolute; left: 33%; bottom: 4rem}
+        .btm-wrap .btm3{
+            position: absolute; left:66%; bottom: 1.5rem}
+
+        .service-list{line-height: 1.8rem; position: relative;}
+        .service-list .icon-home{position: absolute; right: 1rem}
+        .service-list li{color: gray; margin-bottom: .4rem; font-size: .8rem;}
+        .service-list li h3{font-size: 1rem}
+        .service-list li p{font-size: .8rem; color: gray;}
+        .service-list-tit{width: 100%; text-align: center; padding-right: 1rem; box-sizing: border-box; float: left;padding-bottom: .2rem; margin-bottom: .6rem; color:#c4c4c4; font-weight: normal; margin-bottom: .6rem; border-bottom: 2px solid #00b5fd}
+        .service-list .lx-us{font-size: .8rem; color: #808080}
+        .kj-list{width: 80%;margin:2rem auto 0rem;color: #000;font-size: 1rem;}
+        .kj-list li{margin-top: .6rem;list-style: none}
+        .buy-txt{position:absolute;top:35%;background:rgba(0,0,0,.5);color: #fff;padding: .4rem 1rem;width: 60%;text-align: center;left: 50%;margin-left: -37%;
+            opacity: 0;
+            -webkit-transform: translateY(100px);
+            -moz-transform: translateY(100px);
+            -ms-transform: translateY(100px);
+            -o-transform: translateY(100px);
+            transform: translateY(100px);
+        }
+        .active .buy-txt{
+            -webkit-transform: translateY(0px);
+            -moz-transform: translateY(0px);
+            -ms-transform: translateY(0px);
+            -o-transform: translateY(0px);
+            transform: translateY(0px);
+            opacity: 1;
+            -webkit-transition: all .4s ease-in 1.7s;
+            -moz-transition: all .4s ease-in 1.7s;
+            -ms-transition: all .4s ease-in 1.7s;
+            -o-transition: all .4s ease-in 1.7s;
+            transition: all .4s ease-in 1.7s;}
+        .color-2{color:#9d9d9d;font-size: .6rem;}
+
+
+    </style>
+<script>
+    $(document).ready(function(){
+        $('#active').fullpage({
+            anchors:['page1','page2','page3','page4','page5','page6','page7'],
+            navigation:true,
+//            scrollOverflow:true,
+            css3:true,
+            scrollingSpeed:700
+        });
+        $('.kj-btn:eq(0)').on('click',function(){
+            $('.diyi').show();
+        })
+    })
+
+</script>
+</head>
+<body>
+
+<div id="active">
+  <div>
+      <div class="section page1 fz1em">
+          <div class="img">
+              <img src="http://static.fxtrip.com/2014-11/a591e885dd0c2f50d9dc8e59216e0a7f.jpg" alt=""/>
+          </div>
+          <div class="left-wrap">
+              <div class="left left1">2011年冬 </div>
+              <div class="clear"></div>
+              <div class="left left2"> 我们第一次见面</div>
+              <div class="clear"></div>
+              <div class="left left3">聊着温暖的书、电影和旅行</div>
+          </div>
+
+      </div>
+      <div class="section page2 fz1em">
+          <div class="img">
+              <img src="http://static.fxtrip.com/2014-11/bd99dad4c000dd501c591f96239291ba.jpg" alt=""/>
+          </div>
+          <div class="left-wrap">
+              <div class="left left1">两周后 </div>
+              <div class="clear"></div>
+              <div class="left left2">你偷偷地把我的手</div>
+              <div class="clear"></div>
+              <div class="left left3">放进你的大口袋</div>
+          </div>
+      </div>
+      <div class="section page3 fz1em">
+          <div class="img">
+              <img src="http://static.fxtrip.com/2014-11/5ab02379a40521d04d9b3d7dfa89e37c.jpg" alt=""/>
+          </div>
+          <div class="left-wrap">
+              <div class="left left1">2012年深秋 </div>
+              <div class="clear"></div>
+              <div class="left left2">你把戒指套在我的指间</div>
+              <div class="clear"></div>
+              <div class="left left3">骄傲得像个孩子</div>
+          </div>
+      </div>
+      <div class="section page4 fz1em">
+          <div class="img">
+              <img src="http://static.fxtrip.com/2014-11/0d8e804898e9e8117dfe05b1f8da66ee.jpg" alt=""/>
+          </div>
+          <div class="left-wrap">
+              <div class="left left1">婚后各自忙碌</div>
+              <div class="clear"></div>
+              <div class="left left2">我们用平淡书写着朋友圈</div>
+              <div class="clear"></div>
+              <div class="left left3">却又期待着被小确幸击中</div>
+          </div>
+      </div>
+      <div class="section page5 fz1em">
+          <div class="img">
+              <img src="http://static.fxtrip.com/2014-11/92707c82edf6af2c461ea9dd3e0432c2.jpg" alt=""/>
+          </div>
+          <div class="rs_sn">
+              <img src="images/rs_sn.png?1" alt=""/>
+          </div>
+          <!--<div class="buy-txt fz1em">-->
+             <!--火热抢购中-->
+          <!--</div>-->
+          <div class="left-wrap">
+              <div class="left left1">在一起3年了 </div>
+              <div class="clear"></div>
+              <div class="left left2">早就说好的旅行</div>
+              <div class="clear"></div>
+              <div class="left left3">会从哪里开始？</div>
+          </div>
+      </div>
+
+ </div>
+</div>
+<div class="diyi" style="display: none">
+    <div class="heibg heibg1">
+    </div>
+    <div class="fenxiangzi">
+    <img class="dajian1" src="http://static.fxtrip.com/2014-11/07e812137414bf2623d2f1c082faea33.png">
+    <p class="hyds">分享到朋友圈，找朋友帮砍价！</p>
+    </div>
+</div>
+
+
+</body>
+</html>
