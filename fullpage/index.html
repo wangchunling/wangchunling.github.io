@@ -506,6 +506,41 @@
             -o-transition: all .4s ease-in 1.7s;
             transition: all .4s ease-in 1.7s;}
         .color-2{color:#9d9d9d;font-size: .6rem;}
+        .swipe_tip {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    margin-left: -25px;
+    z-index: 999999;
+    display: none;
+}
+.swipe_tip p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -7px 0 0 -14px;
+    width: 25px;
+    height: 14px;
+    background: url(images/swipe_tip.png) no-repeat left top;
+    background-size: 100% 100%;
+    -webkit-animation: start 1.5s infinite ease-in-out;
+}
+@-webkit-keyframes start {
+    0%, 30% {
+        opacity: 0;
+        -webkit-transform: translate(0, 10px);
+    }
+    60% {
+        opacity: 1;
+        -webkit-transform: translate(0, 0);
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform: translate(0, -8px);
+    }
+}
 
 
     </style>
@@ -599,6 +634,9 @@
 
  </div>
 </div>
+<div class="swipe_tip" style="display: block;">
+        <p></p>
+    </div>
 <div class="diyi" style="display: none">
     <div class="heibg heibg1">
     </div>
