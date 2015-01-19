@@ -1,5 +1,6 @@
 /**
  * Created by fxtrip on 2015/1/19.
+ * 原生js练习
  */
 (function(){
     var calcPrise=function(parmas){
