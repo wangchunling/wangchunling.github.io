@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+<link rel="stylesheet" href="http://m.fxtrip.com/Public/Mobile/css/order.css"/>
+<link rel="stylesheet" href="http://m.fxtrip.com/Public/Mobile/css/base.css"/>
+<link rel="stylesheet" href="common.css"/>
+<style>
+*{margin: 0;padding: 0;list-style: none; -webkit-tap-highlight-color:rgba(0,0,0,0)}
+/** 清除内外边距 **/
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */
+dl, dt, dd, ul, ol, li, /* list elements 列表元素 */
+pre, /* text formatting elements 文本格式元素 */
+form, fieldset, legend, button, input, textarea, /* form elements 表单元素 */
+th, td /* table elements 表格元素 */ {
+    margin: 0px;
+    padding: 0px;
+    border: none;
+}
+html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
+:root{height: 100%;width: 100%}
+:root > body{height: 100%;width: 100%}
+/*body{height: 100%;}*/
+/** 设置默认字体 **/
+body,
+button, input, select, textarea /* for ie */ {
+    font: 1rem/1.5 Verdana,'microsoft yahei',tahoma,Helvetica,sans-serif;
+
+}
+h1, h2, h3, h4, h5, h6 { font-size: 100%;color:inherit}
+address, cite, dfn, em, var { font-style: normal; } /* 将斜体扶正 */
+code, kbd, pre, samp { font-family: courier new, courier, monospace; } /* 统一等宽字体 */
+small { font-size: 12px; } /* 小于 12px 的中文很难阅读，让 small 正常化 */
+body{background:#f3f3f3;}
+/** 重置列表元素 **/
+ul, ol { list-style: none; }
+/*重置提交按钮默认样式*/
+input[type='submit'],input[type='button'],input[type='date']{-webkit-appearance:none}
+/** 重置文本格式元素 **/
+a { text-decoration: none;}
+a:hover { text-decoration:none}
+.clear{ clear: both; height: 0px; line-height: 0px;}
+/** 重置表单元素 **/
+legend { color: #000; } /* for ie6 */
+fieldset, img { border: 0; } /* img 搭车：让链接里的 img 无边框 */
+button, input, select, textarea { font-size: 100%; } /* 使得表单元素在 ie 下能继承字体大小 */
+/* 注：optgroup 无法扶正 */
+/** 重置表格元素 **/
+table { border-collapse: collapse; border-spacing: 0; }
+/* 清除浮动 */
+.clearfix:after, .clearfix:after {
+    content: '\20';
+    display: block;
+    height: 0;
+    clear: both;
+}
+.clearfix {
+    *zoom: 1;
+}
+.gird-1{width: 100%}
+.gird-2{width: 50%}
+.gird-4{width: 25%}
+.grid-3{width: 30%;}
+.grid-7{width: 70%;}
+.font-07{ font-size: .7rem;}
+.font-08{font-size: .8rem}
+.font-09{font-size: .9rem}
+.font-1{font-size:1rem}
+.font-1-2{font-size:1.2rem}
+.font-1-3{font-size: 1.3rem}
+.font-1-4{font-size:1.4rem}
+.font-1-5{font-size:1.5rem}
+.font-1-6{font-size:1.6rem}
+.blue{color: #30a9e1;}
+.orange{color:#fc7600;}
+.white{color: #fff}
+.grey{color: #787878;}
+.lightgrey{color:#9e9e9e;}
+.bgc-blue{background:#30a9e1}
+.bgc-orange{background: #fc7600}
+.bgc-grey{background: #787878}
+.bgc-white{background: #fff}
+.bgc-f2{background: #f2f2f2}
+.box-z{box-sizing: border-box}
+.pos-r{position: relative;}
+.hide{display:none}
+.over-hide{overflow: hidden}
+.d-ib{display: inline-block;}
+.middle{vertical-align: middle}
+.db{display: block;}
+.ta-c{text-align: center}
+/*pc vertical center*/
+.ver-m{vertical-align: middle;height:100%}
+.ver-m:after{content: '';height: 100%;display: inline-block;vertical-align: middle}
+/*vertical center*/
+.center{ position: absolute;top:0;left:0;right:0;bottom:0;margin: auto;}
+.flex-cen {
+    display: -webkit-box;	/* OLD: Safari,  iOS, Android browser,
+    display: -moz-box;	    /* OLD: Firefox (buggy) */
+    display: -ms-flexbox;	/* MID: IE 10 */
+    display: -webkit-flex; 	/* NEW, Chrome 21+ */
+    display: flex; 		/* NEW: Opera 12.1, Firefox 22+ */
+    -webkit-box-align: center; -moz-box-align: center; /* OLD… */
+    -ms-flex-align: center; /* you know the drill now… */
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center; -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    margin: 0;
+    height: 100%;
+    width: 100%; /* needed for Firefox */
+}
+/*margin-top*/
+.mt-02{margin-top: .2rem}
+.mt-04{margin-top: .4rem}
+.mt-06{margin-top: .6rem}
+.mt-08{margin-top: .8rem}
+.mt-1{margin-top: 1rem}
+.mt-1-2{margin-top: 1.2rem}
+.mt-1-3{margin-top: 1.3rem;}
+.mt-1-4{margin-top: 1.4rem;}
+.mt-1-5{ margin-top: 1.5rem;}
+/*margin-bottom*/
+.mb-02{margin-bottom: .2rem}
+.mb-04{margin-bottom: .4rem}
+.mb-06{margin-bottom: .6rem}
+.mb-08{margin-bottom: .8rem}
+.mb-1{margin-bottom: 1rem}
+.mb-1-2{margin-bottom: 1.2rem}
+.mb-1-3{margin-bottom: 1.3rem;}
+.mb-1-4{margin-bottom: 1.4rem;}
+.mb-1-5{ margin-bottom: 1.5rem;}
+/*margin-left*/
+.ml-02{margin-left: .2rem}
+.ml-04{margin-left: .4rem}
+.ml-06{margin-left: .6rem}
+.ml-08{margin-left: .8rem}
+.ml-1{margin-left: 1rem}
+.ml-1-2{margin-left: 1.2rem}
+.ml-1-3{margin-left: 1.3rem;}
+.ml-1-4{margin-left: 1.4rem;}
+.ml-1-5{ margin-left: 1.5rem;}
+/*margin-right*/
+.mr-02{margin-right: .2rem}
+.mr-04{margin-right: .4rem}
+.mr-06{margin-right: .6rem}
+.mr-08{margin-right: .8rem}
+.mr-1{margin-right: 1rem}
+.mr-1-2{margin-right: 1.2rem}
+.mr-1-3{margin-right: 1.3rem;}
+.mr-1-4{margin-right: 1.4rem;}
+.mr-1-5{ margin-right: 1.5rem;}
+/*padding*/
+.pad1{padding: 1rem}
+.pt-02{padding-top: .2rem}
+.pt-04{padding-top: .4rem}
+.pt-06{padding-top: .6rem}
+.pt-08{padding-top: .8rem}
+.pt-1{padding-top: 1rem}
+.pt-1-2{padding-top: 1.2rem}
+.pt-1-3{padding-top: 1.3rem;}
+.pt-1-4{padding-top: 1.4rem;}
+.pt-1-5{ padding-top: 1.5rem;}
+/*padding-bottom*/
+.pb-02{padding-bottom: .2rem}
+.pb-04{padding-bottom: .4rem}
+.pb-06{padding-bottom: .6rem}
+.pb-08{padding-bottom: .8rem}
+.pb-1{padding-bottom: 1rem}
+.pb-1-2{padding-bottom: 1.2rem}
+.pb-1-3{padding-bottom: 1.3rem;}
+.pb-1-4{padding-bottom: 1.4rem;}
+.pb-1-5{ padding-bottom: 1.5rem;}
+/*padding-left*/
+.pl-02{padding-left: .2rem}
+.pl-04{padding-left: .4rem}
+.pl-06{padding-left: .6rem}
+.pl-08{padding-left: .8rem}
+.pl-1{padding-left: 1rem}
+.pl-1-2{padding-left: 1.2rem}
+.pl-1-3{padding-left: 1.3rem;}
+.pl-1-4{padding-left: 1.4rem;}
+.pl-1-5{ padding-left: 1.5rem;}
+/*padding-right*/
+.pr-02{padding-right: .2rem}
+.pr-04{padding-right: .4rem}
+.pr-06{padding-right: .6rem}
+.pr-08{padding-right: .8rem}
+.pr-1{padding-right: 1rem}
+.pr-1-2{padding-right: 1.2rem}
+.pr-1-3{padding-right: 1.3rem;}
+.pr-1-4{padding-right: 1.4rem;}
+.pr-1-5{ padding-right: 1.5rem;}
+/*二次预订*/
+.two-book{margin: 0rem auto;padding:1rem;width: 96%;box-sizing: border-box}
+.two-book .two-book-hd{
+    margin-bottom: .6rem;}
+.two-book .two-book-hd > .more{padding:0rem 1rem;border-radius:30px;box-sizing: border-box;
+    height: 1.8rem;
+    margin-right: .6rem;
+    margin-top: -.2rem;
+    line-height: 1.8rem;
+    background-color: #30a9e0; color: #fff}
+.two-book > li {
+    border:1px solid #dcdcdc;
+    margin-bottom: -1px;
+    padding:.2rem .6rem;
+    box-sizing: border-box;
+    position: relative;}
+.two-book > li:last-child p{width:60%}
+.two-book > li > p{width: 100%;
+    margin-right: 2rem;}
+.two-book > li > p:first-child{margin:.2rem 0rem 0rem}
+.two-book .button{  height: 1.8rem;
+    right: .5rem;
+    top: 50%;
+    line-height: 1.8rem;
+    margin-top:-.9rem;
+    position: absolute;color: #fff;padding:0rem 2rem;border-radius:20px;box-sizing: border-box}
+.two-book .more{padding: 0rem 1rem}
+
+.two-order{width: 96%;padding:.4rem;box-sizing: border-box;margin:.6rem auto;
+    border:1px solid #dcdcdc;
+    overflow: hidden;}
+.two-order .two-order-img{width: 40%;height: auto;
+    overflow: hidden;display: inline-block}
+.two-order-img img{width: 100%}
+.two-order .two-order-txt{width:60%;display: inline-block;
+    padding-left: .8rem;
+    box-sizing: border-box;
+    vertical-align: top;
+    margin-left: -.5rem;}
+.two-order .icon-go {float: right;}
+.two-order .two-order-txt .line{margin-bottom: -.2rem}
+.two-order .two-order-ft{margin-top:.4rem}
+.two-order .two-price{display:inline-block;vertical-align: top;float:right;}
+.add-num{width: 5.7rem;height: 30px;
+    overflow: hidden;
+    border:1px solid #ccc;
+    float: left;box-sizing: border-box}
+.add-num span:nth-child(2){border-left: 1px solid #ccc;
+    cursor: text;
+    background-color: #f2f2f2;border-right: 1px solid #ccc}
+.add-num span{width: 1.8rem;height: 30px;
+    text-align: center;
+    cursor: pointer;
+    color:#787878;
+    float: left;}
+.two-order .two-order-ft .form-select{font-size: .6rem;width: 6rem;
+    margin-right: 1rem;}
+.two-order .pay-drop-btn{padding:0rem .5rem 0rem .5rem}
+.two-fix{position: fixed;bottom: 0rem;left:0px;margin:auto;width: 100%;height:3rem;line-height:3rem;box-sizing: border-box}
+/*二次预订支付*/
+.tw-pay-wrap{}
+.tw-pay-wrap h1{padding:1rem .5rem;box-sizing: border-box;font-weight: normal;font-size: .9rem}
+.tw-pay-wrap .line{width: 96%;padding:.4rem 1rem;box-sizing: border-box;border-bottom:1px solid #dcdcdc;margin:auto}
+.tw-pay-wrap .line:nth-of-type(1){border:none;
+    margin-top: 1rem;}
+.tw-pay-wrap .line:last-child{border: none}
+</style>
+</head>
+<body>
+<section class="two-order bgf" id="ceshi">
+    <div class="two-order-img">
+        <img src="http://static.fxtrip.com/2014-08/efd8044d9ee4a6beb84c459a79951bf9.jpg" alt=""/>
+    </div>
+    <div class="two-order-txt">
+        <div class="hd grey">柬埔寨3G上网卡 <span class="icon-go"></span></div>
+        <div class="bd">
+            <div class="line lightgrey font-08">无时间限制</div>
+            <div class="line orange">￥<span id="prise">50</span>/每张</div>
+            <div class="line font-09"><del class="lightgrey">原价:￥100</del></div>
+        </div>
+    </div>
+    <div class="two-order-ft">
+        <div class="add-num bgf mr10" id="btnwrap">
+            <span id="leftBtn">+</span>
+            <span id="count">2</span>
+            <span id="rightBtn">-</span>
+        </div>
+        <div class="form-select">
+            <select name="" id="" class="pay-btn pay-drop-btn font-07">
+                <option value="">2014-01-02</option>
+                <option value="">2014-01-03</option>
+                <option value="">2014-01-04</option>
+            </select>
+        </div>
+        <div class="two-price orange" id="countPrise">总价:￥1000</div>
+    </div>
+
+</section>
+<section class="two-order bgf" id="ceshi">
+    <div class="two-order-img">
+        <img src="http://static.fxtrip.com/2014-08/efd8044d9ee4a6beb84c459a79951bf9.jpg" alt=""/>
+    </div>
+    <div class="two-order-txt">
+        <div class="hd grey">柬埔寨3G上网卡 <span class="icon-go"></span></div>
+        <div class="bd">
+            <div class="line lightgrey font-08">无时间限制</div>
+            <div class="line orange">￥<span id="prise">50</span>/每张</div>
+            <div class="line font-09"><del class="lightgrey">原价:￥100</del></div>
+        </div>
+    </div>
+    <div class="two-order-ft">
+        <div class="add-num bgf mr10" id="btnwrap">
+            <span id="leftBtn">+</span>
+            <span id="count">2</span>
+            <span id="rightBtn">-</span>
+        </div>
+        <div class="form-select">
+            <select name="" id="" class="pay-btn pay-drop-btn font-07">
+                <option value="">2014-01-02</option>
+                <option value="">2014-01-03</option>
+                <option value="">2014-01-04</option>
+            </select>
+        </div>
+        <div class="two-price orange" id="countPrise">总价:￥1000</div>
+    </div>
+
+</section>
+
+<div style="height: 4rem;width: 100%;float: left;"></div>
+<div class="two-fix bgf">
+    <div class="grid-7 fl orange pl-06 box-z">价格:￥444</div>
+    <div class="grid-3 fl bgc-orange ta-c" style="color: #fff">支付</div>
+</div>
+<script>
+</script>
+<script>
+    (function(){
+        var calcPrise=function(parmas){
+            var _this=this;
+            _this.id=_this.$$(parmas.id);
+            _this.option={
+                leftBtn:_this.$$(parmas.leftBtn),
+                rightBtn:_this.$$(parmas.rightBtn),
+                count:_this.$$(parmas.count),
+                prise:_this.$$(parmas.prise),
+                countPrise:_this.$$(parmas.countPrise)
+            };
+            _this.init(_this.option);
+        };
+        calcPrise.prototype={
+            $$:function(id){
+                return document.getElementById(id)
+            },
+            addEventCheck : function( obj, evt, fn ){
+                    obj.addEventListener( evt, fn, false);
+            },
+            countPrise:function(){
+                var _this=this;
+               if(event.target==_this.option.leftBtn){
+                   _this.option.count.innerText++;
+                   _this.option.countPrise.innerText='总价:￥'+_this.option.count.innerText*_this.option.prise.innerText;
+                   console.log(_this.option.count.innerText,_this.option.prise.innerText)
+               }else{
+                   if(_this.option.count.innerText<1){
+                       return false
+                   }else{
+                       _this.option.count.innerText--;
+                   }
+                   _this.option.count.innerText--;
+               }
+            },
+            init:function(option){
+                var _this=this;
+                _this.addEventCheck(_this.option.leftBtn,'click',function(){
+                    _this.countPrise()
+                });
+                _this.addEventCheck(_this.option.rightBtn,'click',function(){
+                    _this.countPrise()
+                })
+            }
+        };
+        var calc=new calcPrise({
+            id:'ceshi',
+            leftBtn:'leftBtn',
+            rightBtn:'rightBtn',
+            count:'count',
+            prise:'prise',
+            countPrise:'countPrise'
+        })
+    }())
+</script>
+<!--<script>-->
+<!--(function(){-->
+    <!--var two=document.getElementsByClassName('two-order');-->
+    <!--for(var i=0;i<two.length;i++) {-->
+    <!--var btn = two[i];-->
+    <!--function addCount() {-->
+    <!--var btnLeft = this.getElementsByTagName('span')[2];-->
+    <!--var btnRight = this.getElementsByTagName('span')[4];-->
+    <!--var prise = this.getElementsByTagName('span')[1];-->
+    <!--var count = this.getElementsByTagName('span')[3];-->
+    <!--var countPrise = this.lastElementChild.lastElementChild;-->
+    <!--if (event.target == btnLeft) {-->
+    <!--count.innerText++;-->
+    <!--countPrise.innerText = '总价:￥'+count.innerText * prise.innerText;-->
+    <!--console.log(count, prise, countPrise)-->
+    <!--}-->
+    <!--if (event.target == btnRight) {-->
+    <!--if (count.innerHTML > 1) {-->
+    <!--count.innerText--;-->
+    <!--countPrise.innerText = '总价:￥'+count.innerText * prise.innerText;-->
+    <!--} else {-->
+    <!--countPrise.innerText = '总价:￥'+count.innerText * prise.innerText;-->
+    <!--}-->
+    <!--console.log(count, prise, countPrise)-->
+    <!--} else {-->
+    <!--return false-->
+    <!--}-->
+    <!--}-->
+    <!--btn.addEventListener('click',addCount,false);-->
+    <!--}-->
+    <!--}());-->
+<!--</script>-->
+</body>
+</html>
