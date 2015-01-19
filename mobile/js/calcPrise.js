@@ -29,12 +29,12 @@
                 _this.option.countPrise.innerText='总价:￥'+_this.option.count.innerText*_this.option.prise.innerText;
                 console.log(_this.option.count.innerText,_this.option.prise.innerText)
             }else{
-                if(_this.option.count.innerText<1){
+                if(_this.option.count.innerText < 1){
                     return false
                 }else{
-                    _this.option.count.innerText--;
+                    --_this.option.count.innerText;
+                    _this.option.countPrise.innerText='总价:￥'+_this.option.count.innerText*_this.option.prise.innerText;
                 }
-                _this.option.count.innerText--;
             }
         },
         init:function(option){
