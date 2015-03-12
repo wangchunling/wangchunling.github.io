@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <script src="http://www.fxtrip.com/lib/jquery.min.js"></script>
+</head>
+<body>
+<div id="test"></div>
+<input type="text" VALUE="K7094"/>
+<button>确定</button>
+<script type="text/javascript">
+   var get = function(){
+        var input_val=$('input').val();
+        var url ='http://apis.juhe.cn/train/s?key=66dc83378f81275af3c01a65aa197489&dtype=json&name='+input_val;
+        console.log(url)
+        $.ajax({
+            url:url,
+            type:'POST',
+            dataType:'jsonp',
+            success:function(json){
+                var item='';
+                for(var i=0;i<json.result.station_list.length;i++){
+                    console.log(json.result.station_list[i]);
+                    item+=json.result.station_list[i].station_name+json.result.station_list[i].arrived_time+'<br/>';
+                    $('#test').html(item)
+                }
+                 console.log(json)
+            }
+        })
+    }
+   $('button').bind('click',get)
+ </script>
+</body>
+</html>
