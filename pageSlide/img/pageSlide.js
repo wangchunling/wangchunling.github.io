@@ -8,7 +8,8 @@
  * @parma  pageInClass   页面进入样式
  *
  * @author  wcl
- * @demo
+ * @demo    http://wangchunling.github.io/pageSlide/
+ * QQ  413349974
  */
 ;(function(){
     $.fn.pageSlide=function(parma){
