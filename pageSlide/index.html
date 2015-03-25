@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="img/zepto.1.1.3.js"></script>
+    <script src="img/pageSlide.js"></script>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <link rel="stylesheet" href="img/reset.css"/>
+    <link rel="stylesheet" href="img/pageSlide.css"/>
+</head>
+<body>
+<header id="header" class="header">
+    <span class="icon-back">返回</span>
+    <h1 class="page-title">整体布局改进</h1>
+</header>
+<div id="main" class="wrap-page">
+    <section class="page bgc-white page-index page-active">
+        <ul class="nav-links">
+            <li data-page="page-a">页面 1</li>
+            <li data-page="page-b">页面 2</li>
+            <li data-page="page-c">页面 3</li>
+        </ul>
+    </section>
+    <section class="page bgc-orange page-a page-next">
+        <div class="demo-test"><p>页面 1</p></div>
+    </section>
+    <section class="page bgc-orange page-b page-next">
+        <div class="demo-test"><p>页面 2</p></div>
+    </section>
+    <section class="page bgc-orange page-c page-next">
+        <div class="demo-test"><p>页面 3</p></div>
+    </section>
+</div>
+<footer id="footer" class="footer">footer</footer>
+<script>
+    $('document').pageSlide({
+        main:'#main',
+        contenItem:'.nav-links li',
+        header:'#header',
+        back:'icon-back',
+        pageOutClass:'page-out',
+        pageInClass:'page-in'
+    })
+</script>
+
+    <script>
+        // 原生js 继承练习
+         function suptype(name){
+             this.name=name;
+         }
+        suptype.prototype.sayName=function(name){
+            this.name=name;
+            return this.name
+        }
+        function subtype(name){
+            suptype.call(this,name)
+        }
+        subtype.prototype=new suptype();
+         var intance=new subtype();
+         var intance1=new subtype();
+         console.log(intance.sayName('dd'),intance1.sayName('ee'))
+    </script>
+</body>
+</html>
