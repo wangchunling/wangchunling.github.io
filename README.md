@@ -10,6 +10,10 @@ http://wangchunling.github.io/waterfall/
 
 存放一些个人的js练习
 
+pageSlide
+http://wangchunling.github.io/pageSlide/
+基于zepto封装的插件 手机端双页滑动效果动画
+
 http://wangchunling.github.io/mobile/ajax_jsonp.html
 练习jquery ajax jsonp 请求 URL是12306的查票api 在聚合api上免费申请
 
