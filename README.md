@@ -20,4 +20,8 @@ http://wangchunling.github.io/mobile/ajax_jsonp.html
 http://wangchunling.github.io/mobile/canvas.html
 canvas 原生js练习 如果把canvas提供的常用对象都给封装一下 会使用的很方便
 
+http://wangchunling.github.io/progress/index.html
+进度条加载js
+
+
 
