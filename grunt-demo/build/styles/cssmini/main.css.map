@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAQA,WAAW,CACT,UAAU,CATP,IAAI,CAUP,MAAM,CAAC,cAAc,CAPrB,kBAAkB,CAQE,UAAU,CAP9B,eAAe,CAOK,UAAU,CAN9B,UAAU,CAMU,UAAU,CAL9B,SAAS,CAAE,IAAS",
+"sources": ["../../../src/styles/sass/main.scss"],
+"names": [],
+"file": "main.css"
+}

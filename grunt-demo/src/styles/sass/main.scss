@@ -1,0 +1,15 @@
+$red:#c00;
+$fz12:12px;
+@mixin box-sizing ($sizing) {
+  -webkit-box-sizing:$sizing;
+  -moz-box-sizing:$sizing;
+  box-sizing:$sizing;
+  font-size: $fz12 * 2;
+}
+.box-border{
+  background:$red;
+  border:1px solid $red;
+  @include box-sizing(border-box);
+}
+
+

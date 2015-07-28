@@ -1,0 +1,11 @@
+@media -sass-debug-info{filename{font-family:file\:\/\/d\:\/wangchunling\.github\.io\/grunt-demo\/src\/styles\/sass\/main\.scss}line{font-family:\000039}}
+.box-border {
+  background: #c00;
+  border: 1px solid #c00;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 24px;
+}
+
+/*# sourceMappingURL=main.css.map */

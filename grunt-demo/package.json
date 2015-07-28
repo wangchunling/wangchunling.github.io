@@ -1,0 +1,17 @@
+{
+    "name":"grunt-demo",
+    "description": "Example project to demonstrate Grunt.",
+    "version":"0.1.0",
+    "private": true,
+    "author": {
+        "name": "wcl",
+        "email": "413349974@qq.com"
+    },
+    "devDependencies": {
+        "grunt": "~0.4.0",
+        "grunt-contrib-sass":"*",
+        "grunt-contrib-jshint":"*",
+        "grunt-contrib-uglify":"*",
+        "grunt-contrib-watch":"*"
+    }
+}
