@@ -23,5 +23,7 @@ canvas 原生js练习 如果把canvas提供的常用对象都给封装一下 会
 http://wangchunling.github.io/progress/index.html
 进度条加载js
 
+grunt-demo
+grunt前端自动化工具，可以自动实现代码的合并、压缩、编译sass
 
 
