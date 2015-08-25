@@ -4,6 +4,9 @@ module.exports = function(grunt) {
     var init = {
         loadPlus : function(str){
             return grunt.loadNpmTasks(str)
+        },
+        regTask : function(str){
+            return grunt.registerTask(str)
         }
     }
     grunt.initConfig({
@@ -110,6 +113,6 @@ module.exports = function(grunt) {
     init.loadPlus('grunt-contrib-connect');
     // 默认任务.
     init.loadPlus('grunt-contrib-uglify');
-    grunt.registerTask('default', ['sass','uglify','jshint','connect','watch']);
+    init.regTask('default', ['sass','uglify','jshint','connect','watch']);
 
 };

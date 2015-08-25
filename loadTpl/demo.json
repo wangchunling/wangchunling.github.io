@@ -1,0 +1,20 @@
+{
+  "apiVersion": "2.1",
+  "id": "1",
+  "data": {
+    "query": "chicago style pizza",
+    "time": "0.1",
+    "currentItemCount": 10,
+    "itemsPerPage": 10,
+    "startIndex": 11,
+    "totalItems": 2700000,
+    "nextLink": "http://www.google.com/search?hl=en&q=chicago+style+pizza&start=20&sa=N",
+    "previousLink": "http://www.google.com/search?hl=en&q=chicago+style+pizza&start=0&sa=N",
+    "pagingLinkTemplate": "http://www.google.com/search/hl=en&q=chicago+style+pizza&start={index}&sa=N",
+    "items": [
+      {
+        "title": "Pizz'a Chicago Home Page"
+      }
+    ]
+  }
+}
