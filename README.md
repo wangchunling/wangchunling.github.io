@@ -8,7 +8,7 @@ http://wangchunling.github.io/waterfall/
 用于wap，没有resize时自动调整列数和动画部分；
 固定列数，自适应图片的实现；
 
-存放一些个人的js练习
+存放一些个人的原生js练习
 
 pageSlide
 http://wangchunling.github.io/pageSlide/
@@ -29,6 +29,9 @@ https://github.com/wangchunling/wangchunling.github.io/tree/master/loadTpl
 
 http://wangchunling.github.io/progress/index.html
 进度条加载js
+
+http://wangchunling.github.io/resload/index.html
+图片预加载、简版圆形进度条
 
 grunt-demo
 https://github.com/wangchunling/wangchunling.github.io/tree/master/grunt-demo

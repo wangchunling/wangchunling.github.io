@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="resLoad.js"></script>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <style>
+        *{
+            margin: 0;
+        }
+        .center{
+            position: absolute;
+            height: 400px;
+            top: 50%;
+            left: 50%;
+            margin-left: -160px;
+            margin-top: -200px;
+        }
+    </style>
+</head>
+<body>
+<div style="text-align: center;" class="center">
+    <canvas id="canvas" width="320" height="400"></canvas>
+</div>
+<script>
+    var arr = [
+        'http://p2.qhimg.com/t01ed1438874f940dc0.jpg',
+        'http://p9.qhimg.com/t01b4ff03b72c7dc6c7.jpg',
+        'http://p2.qhimg.com/t01dd90dfbec92074d0.jpg',
+        'http://p7.qhimg.com/t01cfec6d87cde457c5.jpg',
+        'http://p9.qhimg.com/t01943ced462da67833.jpg',
+        'http://p0.qhimg.com/t01943ced462da67833.jpg',
+        'http://p6.qhimg.com/t01aa15a7ba7ccb49a7.jpg',
+        'http://p8.qhimg.com/t010f1e8badf1134376.jpg',
+        'http://p8.qhimg.com/t01cf37ea915533a032.jpg',
+        'http://p3.qhimg.com/t0193d8a3963e1803e9.jpg',
+        'http://p3.qhimg.com/t01cd6a4d4b4bd4457b.jpg'
+    ]
+    var loader = new resLoader({
+        resources : arr,
+        onStart : function(total){
+            console.log('start:'+total);
+        },
+        onProgress : function(current, total){
+            draw(360*current/total)
+        },
+        onComplete : function(total){
+            console.log('加载完毕:'+total+'个资源')
+        }
+    });
+    loader.start()
+    function draw(deg){
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+        var W=canvas.width;
+        var H=canvas.height;
+        context.clearRect(0,0,W,H)
+//        画圆
+        context.beginPath();
+        context.strokeStyle='#333';
+        context.lineWidth=30;
+        context.arc(W/2, H/2, 100, 0, Math.PI * 2, false);
+        context.stroke();
+        context.closePath()
+        //画进度
+        context.beginPath();
+        context.strokeStyle='#f00';
+        context.lineWidth=10;
+        var r =  deg*Math.PI/180;
+        context.arc(W/2, H/2, 100, 0-90*Math.PI/180, r-90*Math.PI/180, false);
+        context.font="50px abc";
+        var text = Math.floor(deg/360*100)+'%';
+        var text_w = context.measureText(text).width;
+        text_w = context.measureText(text).width;
+        context.fillText(text,W/2 - text_w/2,H/2+15);
+        context.stroke();
+        context.closePath()
+    }
+
+</script>
+</body>
+</html>
