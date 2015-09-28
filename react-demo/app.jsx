@@ -48,6 +48,7 @@ var CouponListBodyItem = React.createClass({
         this.setState({
             checkbox:!this.state.checkbox
         })
+        console.log(this)
     },
     render:function(){
        return(
