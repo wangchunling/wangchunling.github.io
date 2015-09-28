@@ -30,7 +30,7 @@ var CouponListBody = React.createClass({
         var items = [];
         for(var i=0;i<this.props.data.length;i++){
             items.push(
-                <CouponListBodyItem {...this.props.data[i]}  key = {i}/>
+                <CouponListBodyItem {...this.props.data[i]} checkboxIndex = {i} key = {i}/>
             );
         }
         return (
@@ -63,7 +63,7 @@ var CouponListBodyItem = React.createClass({
                    <div className="w-25 d-ib">
                        <div className="btn-group">
                            <p>
-                               <span onClick={this.checkHandle} className={this.state.checkbox ? 'span-radius d-ib' : 'span-radius d-ib on'}></span>
+                               <span onClick={this.checkHandle.bind(this,this.props.checkboxIndex)} className={this.state.checkbox ? 'span-radius d-ib' : 'span-radius d-ib on'}></span>
                            </p>
                        </div>
                    </div>
