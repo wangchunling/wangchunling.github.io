@@ -55,7 +55,7 @@ var CouponListBodyItem = React.createClass({
                <h2 className="mt-04 mb-02 grey">订单编号：{this.props.oid} <span className="fr d-ib w-25 ta-c">订单状态</span></h2>
                <div className="list-item">
                    <div className="w-75 d-ib">
-                       <img className="img" src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=3901401934,3807537848&fm=80" />
+                       <img className="img" src="3b6eb31064dbaa81a128541cb4ecf9fa.jpg" />
                        <p>my demo </p>
                        <p>数量：<span className="orange">{this.props.count}</span>  金额：<span className="orange">￥{this.props.price}</span></p>
                        <p>有效期至 <span className="orange">{this.props.date}</span></p>
