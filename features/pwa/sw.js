@@ -1,0 +1,49 @@
+self.addEventListener('install', function (e) {
+  e.waitUntil(
+    caches.open('wcl-v1').then(cache => {
+      return cache.addAll([
+        '/features/pwa/index.js',
+        '/features/pwa/index.html',
+        '/'
+      ]);
+})
+);
+});
+self.addEventListener('activate', function(event) {
+  console.log(event,'activate')
+})
+self.addEventListener('fetch', function (event) {
+  event.respondWith(
+    caches.match(event.request)
+    .then(function (response) {
+      // 检测是否已经缓存过
+      if (response) {
+        return response;
+      }
+
+      var fetchRequest = event.request.clone();
+
+      return fetch(fetchRequest).then(
+        function (response) {
+          // 检测请求是否有效
+          if (!response || response.status !== 200 || response.type !== 'basic') {
+            return response;
+          }
+
+          var responseToCache = response.clone();
+
+          caches.open('wcl-v1')
+          .then(function (cache) {
+            console.log('=====')
+            console.log(cache)
+            console.log(event.request)
+            console.log(responseToCache)
+            cache.put(event.request, responseToCache);
+          });
+
+          return response;
+        }
+      );
+    })
+  );
+});

@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style class="cp-pen-styles">* {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    width: 100%;
+    margin: 0;
+  }
+
+  body {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  }
+
+  .container {
+    background-image: url("./0236.jpg");
+    background-size: cover;
+    height: 100vh;
+    padding: 10px;
+    width: 100%;
+    position: relative;
+  }
+  .container iframe {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
+
+  .boxes {
+    display: flex;
+    margin-right: 10px;
+    overflow: scroll;
+    min-height: 90vh;
+    width: 100%;
+    align-items: center;
+  }
+  .boxes p {
+    display: block;
+    font-weight: 600;
+    min-width: 200px;
+    color: white;
+    font-size: 40px;
+  }
+  @media (min-width: 767px) {
+    .boxes p {
+      font-size: 60px;
+      min-width: 300px;
+    }
+  }
+
+  .box {
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    min-width: 400px;
+    min-height: 95vh;
+    line-height: 1;
+    padding: 15px 15px;
+    transition: all .3s ease;
+  }
+  .box:nth-child(1n + 1) {
+    border-right: none;
+  }
+  .box h1 {
+    font-weight: 400;
+    font-size: 18px;
+  }
+
+  .none {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .grayscale {
+    -webkit-backdrop-filter: grayscale(1);
+    backdrop-filter: grayscale(1);
+  }
+
+  .brightness {
+    -webkit-backdrop-filter: brightness(1.5);
+    backdrop-filter: brightness(1.5);
+  }
+
+  .blur {
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+  }
+
+  .contrast {
+    -webkit-backdrop-filter: contrast(0.8);
+    backdrop-filter: contrast(0.8);
+  }
+
+  .drop-shadow {
+    -webkit-backdrop-filter: drop-shadow(4px 4px 10px blue);
+    backdrop-filter: drop-shadow(4px 4px 10px blue);
+  }
+
+  .invert {
+    -webkit-backdrop-filter: invert(0.7);
+    backdrop-filter: invert(0.7);
+  }
+
+  .opacity {
+    -webkit-backdrop-filter: opacity(0.4);
+    backdrop-filter: opacity(0.4);
+  }
+
+  .sepia {
+    -webkit-backdrop-filter: sepia(0.4);
+    backdrop-filter: sepia(0.4);
+  }
+
+  .saturate {
+    -webkit-backdrop-filter: saturate(1.8);
+    backdrop-filter: saturate(1.8);
+  }
+
+  .hue-rotate {
+    -webkit-backdrop-filter: hue-rotate(120deg);
+    backdrop-filter: hue-rotate(120deg);
+  }
+  </style>
+</head>
+<body>
+<!-- Learn about backdrop-filter on MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter -->
+
+<div class="container">
+  <div class="boxes">
+    <p>Scroll → </p>
+    <div class="box none">
+      <h1>backdrop-filter: none</h1>
+    </div>
+    <div class="box grayscale">
+      <h1>backdrop-filter: grayscale(1)</h1>
+    </div>
+    <div class="box brightness">
+      <h1>backdrop-filter: brightness(1.5)</h1>
+    </div>
+    <div class="box blur">
+      <h1>backdrop-filter: blur(5px)</h1>
+    </div>
+    <div class="box contrast">
+      <h1>backdrop-filter: contrast(.8)</h1>
+    </div>
+    <div class="box invert">
+      <h1>backdrop-filter: invert(.7)</h1>
+    </div>
+    <div class="box opacity">
+      <h1>backdrop-filter: opacity(.4)</h1>
+    </div>
+    <div class="box sepia">
+      <h1>backdrop-filter: sepia(.4)</h1>
+    </div>
+    <div class="box saturate">
+      <h1>backdrop-filter: saturate(1.8)</h1>
+    </div>
+    <div class="box hue-rotate">
+      <h1>backdrop-filter: hue-rotate(120deg)</h1>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
