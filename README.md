@@ -38,3 +38,13 @@ https://github.com/wangchunling/wangchunling.github.io/tree/master/grunt-demo
 grunt前端自动化工具，可以自动实现代码的合并、压缩、编译sass
 
 
+webpack-demo
+http://wangchunling.github.io/webpack-demo/index.html
+webpack + react + es6 实现
+拆分组件 构建单数据流 子组件将变化通知给父组件  父组件将变化通知另一个组件
+利用state控制按钮高亮显示 因为按钮和支付按钮都会用到这个state 所以放在里他们共同父组件Couponlist里
+然后将变化通知父组件
+点支付按钮获取 父组件的state
+
+
+
