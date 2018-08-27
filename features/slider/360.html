@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en" ng-app="airSlider">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+  <style>
+    body {
+      margin: 0px;
+    }
+
+    .rzslider-container-wrap {
+      position: relative;
+      padding-top: 15px;
+    }
+
+    .rzslider-container-btn {
+      position: absolute;
+      left: 62px;
+      top: 155px;
+      width: 70px;
+      padding-top: 3px;
+      padding-bottom: 3px;
+      border-radius: 8px;
+      border: 1px solid #00B0EB;
+      font-size: 12px;
+      color: #00B0EB;
+      text-align: center;
+    }
+
+    .rzslider-container-svg {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+  </style>
+  <title>360 v2.1</title>
+</head>
+<body>
+<div class="rzslider-container-wrap" id="all" ng-controller="airSliderCtrl">
+  <airaslider rz-slider-model="slider.minValue"
+              rz-slider-high="slider.maxValue"
+              disabled="slider.controlDisabled"
+              rz-slider-options="slider.options">
+  </airaslider>
+  <div class="rzslider-container-btn" ng-click="SetDeivecSpeed()">点击生效</div>
+  <div>
+    min
+    <input type="text" ng-model="inputMinValue" class="ng-valid ng-dirty ng-valid-parse ng-not-empty ng-touched">
+  </div>
+  <div>
+    max
+    <input type="text" ng-model="inputMaxValue" class="ng-pristine ng-untouched ng-valid ng-not-empty">
+  </div>
+  <div>
+    <input type="checkbox" ng-model="inputDisable">
+
+  </div>
+
+</div>
+</body>
+<script src="./lib/angular.js"></script>
+<script src="./lib/airaslider.js"></script>
+<script>
+  var app = angular.module('airSlider', ['airsliderModule'])
+  app.controller('airSliderCtrl', function ($scope, $timeout) {
+    console.log($timeout)
+    //Minimal slider config
+    var getPic = function () {
+      html2canvas(document.getElementById("all"), {scale: 4, allowTaint: true, taintTest: false}).
+      then(function (canvas) {
+        var context = canvas.getContext('2d');
+        var data = canvas.toDataURL();
+        console.log(data)
+      });
+    };
+    $scope.inputMinValue = 200
+    $scope.inputMaxValue = 300
+    $scope.inputDisable = false
+
+    $scope.SetDeivecSpeed = function () {
+      $timeout( function() {
+        console.log($scope.inputMinValue)
+        console.log($scope.inputMaxValue)
+        $scope.slider.controlDisabled = $scope.inputDisable
+        $scope.slider.maxValue = $scope.inputMaxValue
+        $scope.slider.minValue = $scope.inputMinValue
+      },1000);
+
+//      getPic()
+    }
+    $scope.slider = {
+      controlDisabled: false, // 不可选
+      minValue: 100, //最小
+      maxValue: 300, // 最大
+      options: {
+        ftext: 'Air Volume',
+        step: 1, //步长
+        noSwitching: true, // ?
+        stepArray: [60, 64, 72, 81, 89, 100, 106, 115, 123, 132, 140, 149, 157, 166, 174, 183, 191, 200, 208, 217, 225, 234, 242, 251, 259, 268, 276, 284, 293, 300, 310, 318, 327, 335, 344, 352, 360] //步长数组
+      }
+    };
+  })
+</script>
+</html>

@@ -17,6 +17,7 @@ self.addEventListener('fetch', function (event) {
     caches.match(event.request)
     .then(function (response) {
       // 检测是否已经缓存过
+      console.log(response)
       if (response) {
         return response;
       }
@@ -31,13 +32,8 @@ self.addEventListener('fetch', function (event) {
           }
 
           var responseToCache = response.clone();
-
           caches.open('wcl-v1')
           .then(function (cache) {
-            console.log('=====')
-            console.log(cache)
-            console.log(event.request)
-            console.log(responseToCache)
             cache.put(event.request, responseToCache);
           });
 
